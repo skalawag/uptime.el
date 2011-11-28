@@ -5,7 +5,6 @@
     (save-excursion
       (let ((buf (find-file-noselect "~/.emacs.d/.uptime")))
 	(set-buffer buf)
-	(erase-buffer)
 	(print (list 'setq 'best-uptime current-uptime) buf)
 	(save-buffer)
 	(kill-buffer)))))
