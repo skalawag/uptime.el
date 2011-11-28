@@ -1,13 +1,14 @@
 ;;; uptime.el: keeps a persistent record of your best emacs-uptime.
 
-(unless (file-exists-p "~/.emacs.d/.uptime")
-  (save-excursion
-    (let ((buf (find-file-noselect "~/.emacs.d/.uptime")))
-      (set-buffer buf)
-      (erase-buffer)
-      (print (list 'setq 'best-uptime 0) buf)
-      (save-buffer)
-      (kill-buffer))))
+(let ((current-uptime (string-to-number (emacs-uptime "%s"))))
+  (unless (file-exists-p "~/.emacs.d/.uptime")
+    (save-excursion
+      (let ((buf (find-file-noselect "~/.emacs.d/.uptime")))
+	(set-buffer buf)
+	(erase-buffer)
+	(print (list 'setq 'best-uptime current-uptime) buf)
+	(save-buffer)
+	(kill-buffer)))))
 
 (load "~/.emacs.d/.uptime")
 
