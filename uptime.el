@@ -18,7 +18,7 @@
       (set-buffer buf)
       (erase-buffer)
       (print (list 'setq 'best-uptime (string-to-number (emacs-uptime "%s"))) buf)
-      (save-buffer)
+      (save-buffer 0)
       (kill-buffer))))
 
 (defun compare-uptimes ()
