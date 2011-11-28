@@ -1,1 +1,3 @@
-readme for uptime
+uptime.el keeps a persistent record of your best emacs-uptime.
+
+- put uptime.el somewhere on your path and load it from your init file.
