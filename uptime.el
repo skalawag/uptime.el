@@ -1,7 +1,7 @@
 ;;; uptime.el: keeps a persistent record of your best emacs-uptime.
 
-(let ((current-uptime (string-to-number (emacs-uptime "%s"))))
-  (unless (file-exists-p "~/.emacs.d/.uptime")
+(unless (file-exists-p "~/.emacs.d/.uptime")
+  (let ((current-uptime (string-to-number (emacs-uptime "%s"))))
     (save-excursion
       (let ((buf (find-file-noselect "~/.emacs.d/.uptime")))
 	(set-buffer buf)
@@ -32,5 +32,7 @@
 (defun report-uptime ()
   "Display best uptime in mini-buffer"
   (interactive)
-  (message (format "Your best uptime is: %s" 
+  (compare-uptimes)
+  (load "~/.emacs.d/.uptime")
+  (message (format "Your best emacs uptime is: %s" 
 		   (format-seconds "%D, %z%.2h:%.2m:%.2s" best-uptime))))
