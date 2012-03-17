@@ -29,7 +29,7 @@
 	  
 (add-hook 'kill-emacs-hook 'compare-uptimes)
 
-(defun report-uptime ()
+(defun uptime ()
   "Display best uptime in mini-buffer"
   (interactive)
   (compare-uptimes)
