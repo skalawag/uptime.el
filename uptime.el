@@ -34,5 +34,10 @@
   (interactive)
   (compare-uptimes)
   (load "~/.emacs.d/.uptime")
-  (message (format "Your best emacs uptime is: %s" 
-		   (format-seconds "%D, %z%.2h:%.2m:%.2s" best-uptime))))
+  (let ((current-uptime (string-to-number (emacs-uptime "%s"))))
+    (if (< current-uptime best-uptime)
+	(message (format "Your current uptime is %s, but your best uptime is %s" 
+			 (format-seconds "%D, %z%.2h:%.2m:%.2s" current-uptime)
+			 (format-seconds "%D, %z%.2h:%.2m:%.2s" best-uptime)))
+      (message (format "Your current and best emacs uptime is: %s" 
+		       (format-seconds "%D, %z%.2h:%.2m:%.2s" best-uptime))))))
