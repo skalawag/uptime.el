@@ -26,7 +26,7 @@
   (let ((uptime (string-to-number (emacs-uptime "%s"))))
     (if (> uptime best-uptime)
 	(save-uptime))))
-	  
+
 (add-hook 'kill-emacs-hook 'compare-uptimes)
 
 (defun uptime ()
@@ -36,8 +36,8 @@
   (load "~/.emacs.d/.uptime")
   (let ((current-uptime (string-to-number (emacs-uptime "%s"))))
     (if (< current-uptime best-uptime)
-	(message (format "Your current uptime is %s, but your best uptime is %s" 
+	(message (format "Your current emacs uptime is %s, but your best uptime is %s"
 			 (format-seconds "%D, %z%.2h:%.2m:%.2s" current-uptime)
 			 (format-seconds "%D, %z%.2h:%.2m:%.2s" best-uptime)))
-      (message (format "Your current and best emacs uptime is: %s" 
+      (message (format "Your current and best emacs uptime is: %s"
 		       (format-seconds "%D, %z%.2h:%.2m:%.2s" best-uptime))))))
